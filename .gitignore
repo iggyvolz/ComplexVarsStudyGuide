@@ -259,3 +259,7 @@ TSWLatexianTemp*
 *.sta
 # Generated
 *.pdf
+/*.png
+/*.html
+/*.css
+*.tmp
