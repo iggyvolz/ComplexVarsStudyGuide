@@ -349,13 +349,50 @@ Let $k\in\integer$
 \begin{equation}
     z=\frac{\pi}{4}+2k\pi-i(\log_e{3}+\frac{1}{2}\log_e{2})
 \end{equation}
-\section{Topic 6: Finding roots using complex logarithms}
+\section{Topic 7: Using the parametric circle formula to solve a complex integral}
 \subsection{Required Knowledge}
 \begin{itemize}
-    \item In this course, the real logarithm function is specified as $\log_e(x)$ to prevent a self-reference when defining the complex logarithm function.
-    \item The complex logarithm function $\ln(z)$ is defined as $\log_e(|z|)+iarg(z)$.
+    \item For an integral $\int_{C}{f(z)dz}$, the integral of $f(z)$ along the circular arc $C$, replace $z$ with $z_0+re^{i\theta}$ ($z_0$ being the centre), and $C$ with $\theta$, from 0 to the final angle.
 \end{itemize}
 \subsection{Problem}
-Solve for all roots of z, where:
+Solve the following integral:
+\begin{equation}
+    \int_C{\frac{1}{\Re[z]}}dz
+\end{equation}
 
+Where $C$ is the circular arc centred at the origin with a radius of 2 from $\theta=0$ to $\theta=\frac{\pi}{4}$.
+\subsection{Solution}
+Replace $z$ with its polar form, $z=z_0+re^{i\theta}$.  In this case, $z_0=0$ as it is centred at the origin, and $r=2$, thus $z=2e^{i\theta}$, and $dz=2ie^{i\theta}dt$.  $\theta$ is the path of integration, from $0$ to $\frac{\pi}{4}$.
+\begin{equation}
+    \int_0^{\frac{\pi}{4}}{\frac{1}{\Re[2e^{i\theta}]}2ie^{i\theta}}d\theta
+\end{equation}\begin{equation}
+    \int_0^{\frac{\pi}{4}}{\frac{1}{2\Re[e^{i\theta}]}2ie^{i\theta}}d\theta
+\end{equation}
+\begin{equation}
+    \int_0^{\frac{\pi}{4}}{\frac{1}{\Re[e^{i\theta}]}ie^{i\theta}}d\theta
+\end{equation}
+\begin{equation}
+	\int_0^{\frac{\pi}{4}}{\frac{ie^{i\theta}}{\Re[e^{i\theta}]}}d\theta
+\end{equation}
+\begin{equation}
+    \int_0^{\frac{\pi}{4}}{\frac{i\cos(\theta)-\sin(\theta)}{\cos(\theta)}}d\theta
+\end{equation}
+\begin{equation}
+    \int_0^{\frac{\pi}{4}}(i-\tan(\theta))d\theta
+\end{equation}
+\begin{equation}
+	[i\theta + \ln(\cos(\theta))]_0^{\frac{\pi}{4}}
+\end{equation}
+\begin{equation}
+	\frac{\pi}{4}i-0i+\ln(\cos(\frac{\pi}{4}))-\ln(\cos(0))
+\end{equation}
+\begin{equation}
+	\frac{\pi}{4}i+\ln(2^{-\frac{1}{2}})-\ln(1)
+\end{equation}
+\begin{equation}
+	\frac{\pi}{4}i-\frac{1}{2}\ln(2)-0
+\end{equation}
+\begin{equation}
+	-\frac{1}{2}\ln(2)+\frac{\pi}{4}i
+\end{equation}
 \end{document}
