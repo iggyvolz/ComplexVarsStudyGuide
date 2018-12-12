@@ -10,6 +10,7 @@
 \newcommand{\complex}{\mathbb{C}}
 \newcommand{\integer}{\mathbb{Z}}
 \newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\Res}{\operatorname{Res}}
 \newcommand{\mightequal}{\stackrel{?}{=}}
 % Use Re and Im for real and imaginary operators
 \renewcommand{\Re}{\operatorname{Re}}
@@ -22,7 +23,7 @@ This document is the study guide for Nathaniel Barlow's Complex Variables examin
 
 The examination consists of twelve topics, each of which are detailed in this study guide.  Each topic includes a bulleted list of required knowledge followed by an example problem as given in class.
 
-In this document, the imaginary number is referred to as $i$, and a complex number $z$ has real part $a$ and imaginary part $b$.
+In this document and in this course, the imaginary number is referred to as $i$.
 
 \section{Topic 1: Sketching a Curve in the Complex Plane}
 \subsection{Required Knowledge}
@@ -32,7 +33,8 @@ In this document, the imaginary number is referred to as $i$, and a complex numb
     \item For $z=a+bi$ ($a\in\real, b\in\real$), $a=\Re[z]$ (a is the real part of z) and $b=\Im[z]$ (b is the imaginary part of z).
 \end{itemize}
 \subsection{Problem}
-\textit{Note: This problem uses knowledge from Topic 2 (Section \ref{Topic 2: Complex Arithmetic}), as it is difficult to construct a meaningful problem with just the information given.}
+\textit{Note: This problem uses knowledge from Topic 2, as it is difficult to construct a meaningful problem with just the information given.}
+
 Sketch the graph of $z\in\complex$ in the complex plane, where:
 $|z-2i|=\Im[z]$
 \subsection{Solution}
@@ -394,5 +396,315 @@ Replace $z$ with its polar form, $z=z_0+re^{i\theta}$.  In this case, $z_0=0$ as
 \end{equation}
 \begin{equation}
 	-\frac{1}{2}\ln(2)+\frac{\pi}{4}i
+\end{equation}
+\section{Topic 8: Taylor's Theorem}
+\subsection{Required Knowledge}
+\begin{itemize}
+    \item The Taylor series of a function $f(z)$ about $z_0$ is the series $\sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n$.
+    \item The radius of convergence of the Taylor series about $z_0$ is the distance to the nearest singularity.
+	\item Singularies can be found with any of the following terms:
+	\begin{itemize}
+		\item $ln(0)$
+		\item $[0]^{\frac{m}{n}}$, where $m$ and $n$ are relatively prime integers and $n>1$
+		\item $[0]^{-m}$, where $m$ is a positive integer
+	\end{itemize}
+\end{itemize}
+\subsection{Problem}
+Find the radius of convergence of the following function about $z_0=1+i$:
+\begin{equation}
+	f(z)=\frac{\ln(z-3)}{z}
+\end{equation}
+
+\subsection{Solution}
+Singularities occur at $z=0$ and $z=3$, which are plotted below.
+\begin{figure}[H]
+    \includegraphics{Topic8Graph.png}
+\end{figure}
+
+The radius of convergence is the minimum distance to either of these singularities, which are $r_0$ and $r_3$.
+
+\begin{equation}
+	r_0=\sqrt{(1-0)^2+(1-0)^2}
+\end{equation}
+\begin{equation}
+	r_0=\sqrt{1+1}
+\end{equation}
+\begin{equation}
+	r_0=\sqrt{2}
+\end{equation}
+\begin{equation}
+	r_3=\sqrt{(1-3)^2+(1-0)^2}
+\end{equation}
+\begin{equation}
+	r_3=\sqrt{(-2)^2+1^2}
+\end{equation}
+\begin{equation}
+	r_3=\sqrt{4+1}
+\end{equation}
+\begin{equation}
+	r_3=\sqrt{5}
+\end{equation}
+The lesser of these two radii is $\sqrt(2)$, thus the radius of convergence is $\sqrt(2)$.
+
+\section{Topic 9: Laurent Series and Singularity Classification}
+\subsection{Required Knowledge}
+\begin{itemize}
+    \item The Laurent series of a function is the Taylor series evaluated at a singularity.
+    \item The principal part of the Laurent series is the part where the exponent on $(z-z_0)$ is negative.
+    \item The analytic part of the Laurent series is the part where the exponent on $(z-z_0)$ is zero or positive.
+    \item If the principal part is an infinite series, then there is a singularity at $z_0$ is an essential singularity.
+    \item If the principal part is a finite non-zero series, then there is a pole at $z_0$.  The order of the pole is the number of non-zero terms in the series.
+    \item If the principal part is zero, then the singularity at $z_0$ is removable.
+\end{itemize}
+\subsection{Problem}
+Identify the types of singularities of each of the following:
+\begin{itemize}
+	\item $\frac{\cos(z)}{z^4}$
+	\item $\frac{e^\frac{-1}{z^2}}{z^2}$
+	\item $\frac{1-e^z}{z}$
+\end{itemize}
+
+\subsection{Solution}
+
+For the first, there is a singularity at $z=0$.  Replace $\cos(z)$ by its Taylor series at $z_0=0$.  The Taylor series for $\cos(z)$ will be given on the examination:
+\begin{equation}
+	\cos(z)=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}\dots
+\end{equation}
+\begin{equation}
+	\frac{\cos(z)}{z^4}=\frac{1}{z^4}-\frac{1}{z^2 2!}+\frac{1}{4!}-\frac{z^2}{6!}\dots
+\end{equation}
+The first two terms are the principal part, thus this is a pole of order 2.
+
+For the second, let $w=\frac{-1}{z^2}$ and perform the Taylor expansion at $w=0$.
+\begin{equation}
+	e^w=1+w+\frac{w^2}{2!}+\frac{w^3}{3!}+\frac{w^4}{4!}\dots
+\end{equation}
+\begin{equation}
+	e^\frac{-1}{z^2}=1+\frac{-1}{z^2}+\frac{(\frac{-1}{z^2})^2}{2!}+\frac{(\frac{-1}{z^2})^3}{3!}+\frac{(\frac{-1}{z^2})^4}{4!}\dots
+\end{equation}
+\begin{equation}
+	\frac{e^\frac{-1}{z^2}}{z^2}=\frac{1}{z^2}-\frac{1}{z^4}+\frac{1}{2!z^6}-\frac{1}{3!z^8}+\frac{1}{4!z^{10}}\dots
+\end{equation}
+The principal part is an infinite series, thus this is an essential singularity.
+
+For the third, replace $e^z$ with its Taylor series expanded at $z_0=0$.
+\begin{equation}
+	e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\frac{z^4}{4!}\dots
+\end{equation}
+\begin{equation}
+	1-e^z=z+\frac{z^2}{2!}+\frac{z^3}{3!}+\frac{z^4}{4!}\dots
+\end{equation}
+\begin{equation}
+	\frac{1-e^z}{z}=1+\frac{z}{2!}+\frac{z^2}{3!}+\frac{z^3}{4!}\dots
+\end{equation}
+As the principal part is zero, this is a removable singularity.
+\section{Topic 10: Circular Integrals in the Complex Plane}
+\subsection{Required Knowledge}
+\begin{itemize}
+    \item Cauchy's Residue Theorem states that if a function $f(z)$ is analytic everywhere, then the integral over a closed path is equal to $2\pi i$ times the sum of residues enclosed by the path.
+    \item The residue of a function $f(z)$ at $z_0$ is the term with $\frac{1}{z}$ in the Laurent series.
+    \item For a simple pole at $z_0$, $\Res(f,z_0)=\lim_{z\to z_0}(z-z_0)f(z)$.
+    \item For a pole of order n at $z_0$, $\Res(f,z_0)=\frac{1}{(n-1)!}\lim_{z\to z_0}\frac{d^{n-1}}{dz^{n-1}}(z-z_0)^nf(z)$.
+\end{itemize}
+\subsection{Problem}
+Solve the following integral:
+\begin{equation}
+	\oint_C (z^2+3+\frac{(z^2+1)e^z}{(z+i)(z-1)^3}dz)
+\end{equation}
+\subsection{Solution}
+Separate into two separate integrals.  The left integral is zero, as it is a closed integral with no singularities enclosed.  Factor the right side, eliminiating a term, and identify the singularities.
+\begin{equation}
+	\oint_C (z^2+3)dz+\oint_C \frac{(z^2+1)e^z}{(z+i)(z-1)^3}dz
+\end{equation}
+\begin{equation}
+	\oint_C \frac{(z+i)(z-i)e^z}{(z+i)(z-1)^3}dz
+\end{equation}
+\begin{equation}
+	\oint_C \frac{(z-i)e^z}{(z-1)^3}dz
+\end{equation}
+There is a pole of order 3 at $z_0=1$.  Thus, the integral equals:
+\begin{equation}
+	\Res(\frac{(z-i)e^z}{(z-1)^3},z=1)
+\end{equation}
+\begin{equation}
+	\frac{1}{(3-1)!}\lim_{z\to 1}\frac{d^{3-1}}{dz^{3-1}}[(z-1)^3\frac{(z-i)e^z}{(z-1)^3}]
+\end{equation}
+\begin{equation}
+	\frac{1}{2!}\lim_{z\to 1}\frac{d^{2}}{dz^{2}}[(z-i)e^z]
+\end{equation}
+\begin{equation}
+	\frac{1}{2}\lim_{z\to 1}\frac{d}{dz}[e^z+(z-i)e^z]
+\end{equation}
+\begin{equation}
+	\frac{1}{2}\lim_{z\to 1}\frac{d}{dz}[(z-i+1)e^z]
+\end{equation}
+\begin{equation}
+	\frac{1}{2}\lim_{z\to 1}[e^z+(z-i+1)e^z]
+\end{equation}
+\begin{equation}
+	\frac{1}{2}\lim_{z\to 1}[(z-i+2)e^z]
+\end{equation}
+\begin{equation}
+	\frac{1}{2}[(1-i+2)e^1]
+\end{equation}
+\begin{equation}
+	\frac{e(3-i)}{2}
+\end{equation}
+\begin{equation}
+	\frac{3e}{2}+i\frac{e}{2}
+\end{equation}
+\section{Topic 11: Infinite Integrals on the Real Line}
+\subsection{Required Knowledge}
+\begin{itemize}
+    \item An infinite integral on the real line from $-\infty$ to $\infty$ is equal to the contour integral bounded by the real line and in an infinite arc into the positive imaginary plane.
+    \item By Cauchy's Residue Theorem, this integral is equal to $2\pi i$ times the sum of all residues for singularities enclosed by this contour (where the imaginary part is positive).
+    \item If $f(z)$ is an even function (that is, for any $z$, $f(z)=f(-z)$), $\int_{-\infty}^{0}f(z)dz=\int_{0}^{\infty}f(z)dz$, and $2\int_{-\infty}^{0}f(z)dz=2\int_{0}^{\infty}f(z)dz=\int_{-\infty}^{\infty}f(z)dz$
+\end{itemize}
+\subsection{Problem}
+Solve the following integral:
+\begin{equation}
+	\int_{-\infty}^{\infty}\frac{x^2}{(x^2+2x+2)(x^2+1)}dx
+\end{equation}
+\subsection{Solution}
+\begin{equation}
+	\int_{-\infty}^{\infty}\frac{x^2}{(x^2+2x+2)(x^2+1)}dx
+\end{equation}
+Let $C_r$ be the counterclockwise path bounded by the real axis and a semicircle extending into the positive imaginary quadrants with a radius of r.
+\begin{equation}
+	\lim{r\to\infty}\oint_{C_r}\frac{z^2}{(z^2+2z+2)(z^2+1)}dz
+\end{equation}
+\begin{equation}
+	\lim{r\to\infty}\oint_{C_r}\frac{z^2}{(z-(-1-i))(z-(-1+i))(z+i)(z-i)}dz
+\end{equation}
+There are simple poles at $z=-1-i$, $z=-1+i$, $z=-i$, and $z=i$.  Of these, only $z=-1+i$ and $z=i$, so these are the only residues we need to consider.
+
+Let $f(z)=\frac{z^2}{(z-(-1-i))(z-(-1+i))(z+i)(z-i)}$
+
+\begin{equation}
+	\Res[f(z), z=i]=\lim_{z\to i}\frac{z^2(z-i)}{(z-(-1-i))(z-(-1+i))(z+i)(z-i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\lim_{z\to i}\frac{z^2}{(z-(-1-i))(z-(-1+i))(z+i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{i^2}{(i-(-1-i))(i-(-1+i))(i+i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{-1}{(i-1+i)(i+1-i))(2i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{-1}{(2i+1)(1))(2i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{-1}{-4+2i}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{4+2i}{20}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{2+i}{10}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=i]=\frac{1}{5}+\frac{1}{10}i
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\lim_{z\to -1+i}\frac{z^2(z-(-1+i))}{(z-(-1-i))(z-(-1+i))(z+i)(z-i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\lim_{z\to -1+i}\frac{z^2}{(z-(-1-i))(z+i)(z-i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\frac{(-1+i)^2}{(-1+i-(-1-i))((-1+i)+i)((-1+i)-i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\frac{-2i}{(2i)(-1)(-1+2i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\frac{2i}{(2i)(-1+2i)}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\frac{1}{-1+2i}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=\frac{-1-2i}{5}
+\end{equation}
+\begin{equation}
+	\Res[f(z), z=-1+i]=-\frac{1}{5}-\frac{2}{5}i
+\end{equation}
+
+The integral is equal to the sum of the residues times $2\pi i$.
+
+\begin{equation}
+	2\pi\sum\Res=2\pi i(\frac{1}{5}+\frac{1}{10}i-\frac{1}{5}-\frac{2}{5}i)
+\end{equation}
+\begin{equation}
+	2\pi\sum\Res=2\pi i(\frac{-3}{10}i)
+\end{equation}
+\begin{equation}
+	2\pi\sum\Res=\frac{3\pi}{5}
+\end{equation}
+\section{Topic 12: Fourier Integrals}
+\subsection{Required Knowledge}
+\begin{itemize}
+    \item In infinite integral which satisifies Jordan's Lemma (all integrals in this class) and contains a $\cos(z)$ term or $\sin(z)$ term can be solved by replacing the trigonometric function with $e^{iz}$ and taking the real or imaginary part of the resultant integral.
+\end{itemize}
+\subsection{Problem}
+Solve the following integral:
+\begin{equation}
+	\int_0^{\infty}\frac{cos(3x)}{(x^2+1)^2}dx
+\end{equation}
+\subsection{Solution}
+Because this is an even function, the evaluation of the integral from $0$ to $\infty$ is half the evaluation of the integral from $-\infty$ to $\infty$
+\begin{equation}
+	\frac{1}{2}\int_{-\infty}^{\infty}\frac{cos(3x)}{(x^2+1)^2}dx
+\end{equation}
+We assume that the integrand satisfies Jordan's Lemma, as we do with all integrands in this course.
+\begin{equation}
+	=\frac{1}{2}\Re[\int_{-\infty}^{\infty}\frac{e^{3ix}}{(x^2+1)^2}dx]
+\end{equation}
+Let $C_r$ be the counterclockwise path bounded by the real axis and a semicircle extending into the positive imaginary quadrants with a radius of r.
+\begin{equation}
+	=\frac{1}{2}\Re[2\pi i\int_{C_r}\frac{e^{3iz}}{(z-i)^2(z+i)^2}dz]
+\end{equation}
+As an aside, we can show that we can replace $\Re[wi]$ with $-Im[w]$:
+\begin{equation}
+	\Re[wi]=\Re[i(\Re[w]+i\Im[w])]=\Re[i\Re[w]-\Im[w]]=\Re[-\Im[w]]=-\Im[w]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\int_{C_r}\frac{e^{3iz}}{(z-i)^2(z+i)^2}dz]
+\end{equation}
+This function has poles of order 2 at $z=i$ and $z=-i$.  However, we only consider $z=i$.
+\begin{equation}
+	=-\pi\Im[\Res[\frac{e^{3iz}}{(z-i)^2(z+i)^2}, z=i]]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\lim_{z\to i}[\frac{1}{(2-1)!}\frac{d^{(2-1)}}{dz^{(2-1)}}[\frac{(z-i)^2e^{3iz}}{(z-i)^2(z+i)^2}]]]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\lim_{z\to i}[\frac{1}{(1)!}\frac{d^{(1)}}{dz^{(1)}}[\frac{e^{3iz}}{(z+i)^2}]]]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\lim_{z\to i}[\frac{d}{dz}[\frac{e^{3iz}}{(z+i)^2}]]]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\lim_{z\to i}[\frac{3ie^{3iz}(z+i)^2-2(2+i)e^{3iz}}{(z+i)^4}]]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\frac{3ie^{3i^2}(i+i)^2-2(2+i)e^{3i^2}}{(i+i)^4}]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\frac{3ie^{-3}(i+i)^2-2(2+i)e^{-3}}{(2i)^4}]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\frac{-16ie^{-3}}{16}]
+\end{equation}
+\begin{equation}
+	=-\pi\Im[\frac{-i}{e^{3}}]
+\end{equation}
+\begin{equation}
+	=-\pi\frac{-1}{e^{3}}
+\end{equation}
+\begin{equation}
+	=\frac{\pi}{e^3}
 \end{equation}
 \end{document}
