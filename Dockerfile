@@ -11,4 +11,6 @@ FROM scratch AS html
 COPY --from=html-build /*.png /
 COPY --from=html-build /studyguide.html /index.html
 COPY --from=html-build /studyguide.css /
-
+FROM scratch
+COPY --from=html /* /
+COPY --from=pdf /* /
